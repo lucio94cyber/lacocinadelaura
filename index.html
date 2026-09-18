@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Cocina Laura — pastelería y cocina artesanal. Pedidos con 24/48 hs de anticipación.">
+  <meta name="theme-color" content="#f26a21">
+  <title>La Cocina Laura | Pastelería artesanal</title>
+  <link rel="icon" href="Logo/La_Cocina_Laura.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+  <header class="site-header" id="inicio">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="La Cocina Laura - inicio">
+        <img src="Imagenes/logo/La_Cocina_Laura.png" alt="La Cocina Laura">
+        <span>LA COCINA <strong>LAURA</strong></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#tortas">Tortas</a>
+        <a href="#tartas-dulces">Tartas Dulces</a>
+        <a href="#tartas-saladas">Tartas Saladas</a>
+        <a href="#postres">Postres</a>
+        <a href="#pan">Pan</a>
+        <a href="#budines">Budines</a>
+        <a href="#navidad">Navidad</a>
+        <a href="#pascua">Pascua</a>
+        <a href="#historia">Historia</a>
+      </nav>
+      <button class="cart-button" id="openCart" aria-label="Abrir carrito">
+        <span class="cart-icon">🛒</span><span>Pedido</span><b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="eyebrow">PASTELERÍA · COCINA ARTESANAL</span>
+        <h1>Hecho en casa.<br><em>Hecho con amor.</em></h1>
+        <p>Sabores para compartir, celebrar y disfrutar. Pedidos con 24/48 hs de anticipación.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#tortas">Ver productos</a>
+          <button class="btn btn-light" id="heroCart">Ver mi pedido <span id="heroCount">0</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro section-shell">
+      <div class="intro-copy">
+        <span class="eyebrow">LA COCINA LAURA</span>
+        <h2>Dulce, salado y todo lo que hace especial a una mesa.</h2>
+        <p>¿Se acerca una ocasión especial? Encontrá tortas, tartas, budines, postres y opciones artesanales para compartir. Elegí tus productos y armá tu pedido en pocos pasos.</p>
+      </div>
+      <div class="intro-image"><img src="Imagenes/Angel_Cake.jpg" alt="Preparación artesanal de La Cocina Laura" loading="lazy"></div>
+    </section>
+
+    <section class="category-section section-shell" id="tortas">
+      <div class="section-heading"><div><span class="eyebrow">DULCE</span><h2>Tortas</h2></div><span class="section-count" data-count="Tortas"></span></div>
+      <div class="product-grid" data-category="Tortas"></div>
+    </section>
+    <section class="category-section section-shell" id="tartas-dulces">
+      <div class="section-heading"><div><span class="eyebrow">DULCE</span><h2>Tartas Dulces</h2></div><span class="section-count" data-count="Tartas Dulces"></span></div>
+      <div class="product-grid" data-category="Tartas Dulces"></div>
+    </section>
+    <section class="category-section section-shell" id="tartas-saladas">
+      <div class="section-heading"><div><span class="eyebrow">SALADO</span><h2>Tartas Saladas</h2></div><span class="section-count" data-count="Tartas Saladas"></span></div>
+      <div class="product-grid" data-category="Tartas Saladas"></div>
+    </section>
+    <section class="category-section section-shell" id="postres">
+      <div class="section-heading"><div><span class="eyebrow">DULCE</span><h2>Postres</h2></div><span class="section-count" data-count="Postres"></span></div>
+      <div class="product-grid" data-category="Postres"></div>
+    </section>
+    <section class="category-section section-shell" id="pan">
+      <div class="section-heading"><div><span class="eyebrow">ARTESANAL</span><h2>Pan</h2></div><span class="section-count" data-count="Pan"></span></div>
+      <div class="product-grid" data-category="Pan"></div>
+    </section>
+    <section class="category-section section-shell" id="budines">
+      <div class="section-heading"><div><span class="eyebrow">DULCE</span><h2>Budines</h2></div><span class="section-count" data-count="Budines"></span></div>
+      <div class="product-grid" data-category="Budines"></div>
+    </section>
+    <section class="category-section seasonal section-shell" id="navidad">
+      <div class="section-heading"><div><span class="eyebrow">ESPECIALES</span><h2>Navidad</h2></div><span class="section-count" data-count="Navidad"></span></div>
+      <div class="product-grid" data-category="Navidad"></div>
+    </section>
+    <section class="category-section seasonal section-shell" id="pascua">
+      <div class="section-heading"><div><span class="eyebrow">ESPECIALES</span><h2>Pascua</h2></div><span class="section-count" data-count="Pascua"></span></div>
+      <div class="product-grid" data-category="Pascua"></div>
+    </section>
+
+    <section class="story section-shell" id="historia">
+      <div class="story-image"><img src="Imagenes/Historia/Sirviendo una torta.jpg" alt="La Cocina Laura en familia" loading="lazy"></div>
+      <div class="story-copy"><span class="eyebrow">NUESTRA HISTORIA</span><h2>Cómo nació esta historia</h2>
+        <p>Todo empezó una noche común, cenando en familia. Entre charlas sin rumbo y platos vacíos, uno de los chicos tiró la idea:</p>
+        <blockquote>“Che, ¿y si probamos? No perdemos nada... peor sería quedarse con las ganas.”</blockquote>
+        <p>Laura dudó unos segundos, y contestó con una sonrisa:</p>
+        <blockquote>“Bueno, dale... pero ustedes se encargan de las redes.”</blockquote>
+        <p>Así, sin vueltas, arrancó <strong>La Cocina Laura</strong>. Pero en realidad, esto venía de antes. Desde chica, Laura siempre tuvo buen ojo para la cocina. Mucho de eso venía de su mamá, que también había aprendido de los abuelos. En su casa siempre se cocinó con amor y sin apuro.</p>
+        <p>Hoy, <strong>La Cocina Laura</strong> es eso: una mezcla de historia familiar, ganas de compartir y mucho sabor.</p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div><span class="eyebrow">¿YA ELEGISTE?</span><h2>Armá tu pedido y consultá disponibilidad.</h2></div>
+      <button class="btn btn-primary" id="ctaCart">Abrir mi pedido</button>
+    </section>
+  </main>
+
+  <footer><div class="footer-inner"><div class="brand footer-brand"><img src="Imagenes/logo/La_Cocina_Laura.png" alt="La Cocina Laura"><span>LA COCINA <strong>LAURA</strong></span></div><a href="https://www.instagram.com/lacocinalaura" target="_blank" rel="noopener noreferrer"><img src="Logo/Instagram.ico" alt="Instagram"> @lacocinalaura</a><p>© 2024–2026 La Cocina Laura</p></div></footer>
+
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Tu pedido" aria-hidden="true">
+    <div class="cart-header"><div><span class="eyebrow">TU PEDIDO</span><h2>Mi pedido</h2></div><button class="close-cart" id="closeCart" aria-label="Cerrar carrito">×</button></div>
+    <div class="cart-body" id="cartItems"></div>
+    <div class="cart-footer"><div class="cart-total"><span>Total</span><strong id="cartTotal">A confirmar</strong></div><p class="cart-note">Los precios no están cargados en el catálogo original. El total se confirma al consultar disponibilidad.</p><button class="whatsapp-button" id="sendWhatsApp">Enviar pedido por WhatsApp</button><button class="clear-button" id="clearCart">Vaciar pedido</button></div>
+  </aside>
+
+  <div class="toast" id="toast" role="status"></div>
+  <div class="image-modal" id="imageModal" aria-hidden="true"><button id="closeModal" aria-label="Cerrar">×</button><img id="modalImage" src="" alt=""></div>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
