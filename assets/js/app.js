@@ -98,7 +98,6 @@ function renderProducts() {
           <p>No hay productos disponibles en esta categoría.</p>
         </div>
       `;
-
       return;
     }
 
@@ -126,9 +125,11 @@ function renderProducts() {
 
               ${
                 product.descripcion
-                  ? `<p class="product-description">
+                  ? `
+                    <p class="product-description">
                       ${escapeHtml(product.descripcion)}
-                    </p>`
+                    </p>
+                  `
                   : ""
               }
 
@@ -388,41 +389,28 @@ function escapeHtml(value) {
   );
 }
 
-/*
-========================================================
- CARGA DE PRODUCTOS
-========================================================
 
-Primero intenta cargar:
-
-data/productos.json
-
-Si el navegador bloquea fetch o el archivo no está
-disponible, utiliza los productos incluidos directamente
-en la página mediante window.LAURA_PRODUCTS.
-
-========================================================
-*/
+/* =====================================================
+   CARGAR PRODUCTOS
+   ===================================================== */
 
 async function loadProducts() {
 
-  /*
-  1. Si index.html contiene los productos directamente
-  */
-  if (
-    Array.isArray(window.LAURA_PRODUCTS) &&
-    window.LAURA_PRODUCTS.length
-  ) {
-    return window.LAURA_PRODUCTS;
-  }
-
-  /*
-  2. Intentar cargar el JSON normalmente
-  */
   try {
 
+    /*
+     * IMPORTANTE:
+     * Tu archivo está en la raíz del repositorio:
+     *
+     * data_productos.json
+     *
+     * No está dentro de:
+     *
+     * data/productos.json
+     */
+
     const response = await fetch(
-      "./data/productos.json",
+      "./data_productos.json",
       {
         cache: "no-store"
       }
@@ -438,72 +426,15 @@ async function loadProducts() {
 
     if (!Array.isArray(products)) {
       throw new Error(
-        "productos.json no contiene un array"
+        "data_productos.json no contiene un array válido"
       );
     }
-
-    return products;
-
-  } catch (error) {
-
-    console.warn(
-      "No se pudo cargar data/productos.json:",
-      error
-    );
-
-    /*
-    3. Último intento:
-       buscar el JSON desde la raíz
-    */
-
-    try {
-
-      const response = await fetch(
-        "./data_productos.json",
-        {
-          cache: "no-store"
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(
-          `HTTP ${response.status}`
-        );
-      }
-
-      const products = await response.json();
-
-      if (Array.isArray(products)) {
-        return products;
-      }
-
-    } catch (secondError) {
-
-      console.warn(
-        "Segundo intento de carga fallido:",
-        secondError
-      );
-
-    }
-
-    throw new Error(
-      "No fue posible cargar los productos."
-    );
-  }
-}
-
-async function init() {
-
-  try {
-
-    state.products = await loadProducts();
 
     console.log(
-      `La Cocina de Laura: ${state.products.length} productos cargados.`
+      `La Cocina Laura: ${products.length} productos cargados.`
     );
 
-    renderProducts();
-    renderCart();
+    return products;
 
   } catch (error) {
 
@@ -511,6 +442,29 @@ async function init() {
       "Error cargando productos:",
       error
     );
+
+    throw error;
+  }
+}
+
+
+/* =====================================================
+   INICIALIZACIÓN
+   ===================================================== */
+
+async function init() {
+
+  try {
+
+    state.products = await loadProducts();
+
+    renderProducts();
+
+    renderCart();
+
+  } catch (error) {
+
+    console.error(error);
 
     $$(".product-grid").forEach((grid) => {
 
@@ -520,9 +474,8 @@ async function init() {
           <h3>No se pudieron cargar los productos</h3>
 
           <p>
-            Revisá que el archivo
-            <strong>data/productos.json</strong>
-            esté dentro del proyecto.
+            No se pudo leer
+            <strong>data_productos.json</strong>.
           </p>
 
         </div>
@@ -533,127 +486,134 @@ async function init() {
   }
 }
 
-/* ================================
+
+/* =====================================================
    EVENTOS
-================================ */
+   ===================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-  const openCartButton = $("#openCart");
-  const heroCartButton = $("#heroCart");
-  const ctaCartButton = $("#ctaCart");
-  const closeCartButton = $("#closeCart");
-  const backdrop = $("#cartBackdrop");
-  const sendButton = $("#sendWhatsApp");
-  const clearButton = $("#clearCart");
+    const openCartButton = $("#openCart");
+    const heroCartButton = $("#heroCart");
+    const ctaCartButton = $("#ctaCart");
+    const closeCartButton = $("#closeCart");
+    const backdrop = $("#cartBackdrop");
+    const sendButton = $("#sendWhatsApp");
+    const clearButton = $("#clearCart");
 
-  if (openCartButton) {
-    openCartButton.onclick = openCart;
-  }
+    if (openCartButton) {
+      openCartButton.onclick = openCart;
+    }
 
-  if (heroCartButton) {
-    heroCartButton.onclick = openCart;
-  }
+    if (heroCartButton) {
+      heroCartButton.onclick = openCart;
+    }
 
-  if (ctaCartButton) {
-    ctaCartButton.onclick = openCart;
-  }
+    if (ctaCartButton) {
+      ctaCartButton.onclick = openCart;
+    }
 
-  if (closeCartButton) {
-    closeCartButton.onclick = closeCart;
-  }
+    if (closeCartButton) {
+      closeCartButton.onclick = closeCart;
+    }
 
-  if (backdrop) {
-    backdrop.onclick = closeCart;
-  }
+    if (backdrop) {
+      backdrop.onclick = closeCart;
+    }
 
-  if (sendButton) {
-    sendButton.onclick = sendWhatsApp;
-  }
+    if (sendButton) {
+      sendButton.onclick = sendWhatsApp;
+    }
 
-  if (clearButton) {
+    if (clearButton) {
 
-    clearButton.onclick = () => {
+      clearButton.onclick = () => {
 
-      state.cart = [];
+        state.cart = [];
 
-      save();
+        save();
 
-      toast("Pedido vacío");
+        toast("Pedido vacío");
 
-    };
+      };
 
-  }
+    }
 
-  const closeModalButton = $("#closeModal");
-  const imageModal = $("#imageModal");
+    const closeModalButton = $("#closeModal");
+    const imageModal = $("#imageModal");
 
-  if (closeModalButton) {
-    closeModalButton.onclick = closeModal;
-  }
+    if (closeModalButton) {
+      closeModalButton.onclick = closeModal;
+    }
 
-  if (imageModal) {
+    if (imageModal) {
 
-    imageModal.onclick = (event) => {
+      imageModal.onclick = (event) => {
 
-      if (
-        event.target.id === "imageModal"
-      ) {
-        closeModal();
-      }
+        if (
+          event.target.id === "imageModal"
+        ) {
+          closeModal();
+        }
 
-    };
+      };
 
-  }
+    }
 
-  const menuToggle = $("#menuToggle");
-  const mainNav = $("#mainNav");
+    const menuToggle = $("#menuToggle");
+    const mainNav = $("#mainNav");
 
-  if (menuToggle && mainNav) {
+    if (menuToggle && mainNav) {
 
-    menuToggle.onclick = () => {
+      menuToggle.onclick = () => {
 
-      const isOpen =
-        mainNav.classList.toggle("open");
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-      );
-
-    };
-
-    $$("#mainNav a").forEach((link) => {
-
-      link.addEventListener("click", () => {
-
-        mainNav.classList.remove("open");
+        const isOpen =
+          mainNav.classList.toggle("open");
 
         menuToggle.setAttribute(
           "aria-expanded",
-          "false"
+          isOpen ? "true" : "false"
+        );
+
+      };
+
+      $$("#mainNav a").forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            mainNav.classList.remove("open");
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
         );
 
       });
 
-    });
+    }
 
-  }
+    document.addEventListener(
+      "keydown",
+      (event) => {
 
-  document.addEventListener(
-    "keydown",
-    (event) => {
+        if (event.key === "Escape") {
 
-      if (event.key === "Escape") {
+          closeCart();
+          closeModal();
 
-        closeCart();
-        closeModal();
+        }
 
       }
+    );
 
-    }
-  );
+    init();
 
-  init();
-
-});
+  }
+);
