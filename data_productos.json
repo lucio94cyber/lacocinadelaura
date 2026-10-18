@@ -518,5 +518,53 @@
     "categoria": "Pascua",
     "imagen": "Imagenes/Pascua/Rosca rellena.jpg",
     "precio": null
-  }
+  },
+{
+  "id": "tortas-chocolate-humeda",
+  "titulo": "Chocolate húmeda",
+  "nombre": "Chocolate húmeda",
+  "categoria": "Tortas",
+  "imagen": "Imagenes/Tortas/Chocolate Humeda.jpeg",
+  "precio": null
+},
+{
+  "id": "tortas-tarta-patagonia",
+  "titulo": "Tarta Patagonia",
+  "nombre": "Tarta Patagonia",
+  "categoria": "Tortas",
+  "imagen": "Imagenes/Tortas/Tarta Patagonia.jpg",
+  "precio": null
+},
+{
+  "id": "tortas-dubai",
+  "titulo": "Torta Dubai",
+  "nombre": "Torta Dubai",
+  "categoria": "Tortas",
+  "imagen": "Imagenes/Tortas/Torta Dubai.jpg",
+  "precio": null
+},
+{
+  "id": "tortas-snicker",
+  "titulo": "Torta Snicker",
+  "nombre": "Torta Snicker",
+  "categoria": "Tortas",
+  "imagen": "Imagenes/Tortas/Torta Snicker.jpg",
+  "precio": null
+},
+{
+  "id": "tortas-tres-leches",
+  "titulo": "Torta Tres Leches",
+  "nombre": "Torta Tres Leches",
+  "categoria": "Tortas",
+  "imagen": "Imagenes/Tortas/Torta Tres Leches.jpg",
+  "precio": null
+},
+{
+  "id": "tortas-vasca",
+  "titulo": "Torta Vasca",
+  "nombre": "Torta Vasca",
+  "categoria": "Tortas",
+  "imagen": "Imagenes/Tortas/Torta Vasca.jpg",
+  "precio": null
+}
 ]
