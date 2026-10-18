@@ -16,11 +16,11 @@
     "precio": null
   },
   {
-    "id": "tortas-pavloa",
-    "titulo": "pavloa",
-    "nombre": "pavloa",
+    "id": "tortas-pavlova",
+    "titulo": "pavlova",
+    "nombre": "pavlova",
     "categoria": "Tortas",
-    "imagen": "Imagenes/Tortas/pavloa.jpg",
+    "imagen": "Imagenes/Tortas/pavlova.jpg",
     "precio": null
   },
   {
@@ -531,7 +531,7 @@
   "id": "tortas-tarta-patagonia",
   "titulo": "Tarta Patagonia",
   "nombre": "Tarta Patagonia",
-  "categoria": "Tortas",
+  "categoria": "Tartas Dulces",
   "imagen": "Imagenes/Tortas/Tarta Patagonia.jpg",
   "precio": null
 },
