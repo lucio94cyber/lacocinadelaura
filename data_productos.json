@@ -17,8 +17,8 @@
   },
   {
     "id": "tortas-pavlova",
-    "titulo": "pavlova",
-    "nombre": "pavlova",
+    "titulo": "Pavlova",
+    "nombre": "Pavlova",
     "categoria": "Tortas",
     "imagen": "Imagenes/Tortas/pavlova.jpg",
     "precio": null
