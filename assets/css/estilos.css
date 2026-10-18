@@ -5,37 +5,35 @@
 
 /* Fotografías de productos: completas, centradas y con espacio */
 .product-image {
-  box-sizing: border-box;
-  width: 100%;
-  height: 220px; /* Altura fija para que todas las tarjetas tengan el mismo tamaño visual */
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #fffaf2;
-  position: relative;
+  box-sizing: border-box;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fffaf2;
 }
 
 .product-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Cambiado a cover para que llene bien el espacio sin deformarse */
-  object-position: center;
-  transition: transform 0.4s ease; /* Transición suave para el zoom */
-  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .product-card:hover .product-image img {
-  transform: scale(1.06); /* Un zoom un poco más perceptibles y moderno */
+  transform: scale(1.025);
 }
 
 /* Miniaturas del carrito */
 .cart-item img {
-  object-fit: cover;
-  border-radius: 6px; /* Bordes redondeados sutiles para la miniatura */
-  padding: 0;
-  box-sizing: border-box;
-  background: #fffaf2;
+  object-fit: contain;
+  padding: 4px;
+  box-sizing: border-box;
+  background: #fffaf2;
 }
