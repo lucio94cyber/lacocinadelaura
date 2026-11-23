@@ -562,42 +562,82 @@ document.addEventListener(
 
     }
 
-    const menuToggle = $("#menuToggle");
-    const mainNav = $("#mainNav");
 
-    if (menuToggle && mainNav) {
+const menuToggle = $("#menuToggle");
+const mainNav = $("#mainNav");
 
-      menuToggle.onclick = () => {
+const productsDropdown = $("#productsDropdown");
+const productsDropdownToggle = $("#productsDropdownToggle");
 
-        const isOpen =
-          mainNav.classList.toggle("open");
+if (menuToggle && mainNav) {
 
-        menuToggle.setAttribute(
-          "aria-expanded",
-          isOpen ? "true" : "false"
-        );
+  menuToggle.onclick = () => {
 
-      };
+    const isOpen = mainNav.classList.toggle("open");
 
-      $$("#mainNav a").forEach((link) => {
+    menuToggle.setAttribute(
+      "aria-expanded",
+      isOpen ? "true" : "false"
+    );
 
-        link.addEventListener(
-          "click",
-          () => {
+  };
 
-            mainNav.classList.remove("open");
+}
 
-            menuToggle.setAttribute(
-              "aria-expanded",
-              "false"
-            );
+if (productsDropdown && productsDropdownToggle) {
 
-          }
-        );
+  productsDropdownToggle.onclick = (event) => {
 
-      });
+    event.stopPropagation();
 
-    }
+    const isOpen = productsDropdown.classList.toggle("open");
+
+    productsDropdownToggle.setAttribute(
+      "aria-expanded",
+      isOpen ? "true" : "false"
+    );
+
+  };
+
+}
+
+$$("#mainNav a").forEach((link) => {
+
+  link.addEventListener("click", () => {
+
+    mainNav.classList.remove("open");
+
+    productsDropdown?.classList.remove("open");
+
+    menuToggle?.setAttribute("aria-expanded", "false");
+
+    productsDropdownToggle?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  });
+
+});
+
+document.addEventListener("click", (event) => {
+
+  if (
+    productsDropdown &&
+    !productsDropdown.contains(event.target)
+  ) {
+
+    productsDropdown.classList.remove("open");
+
+    productsDropdownToggle?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
+
+});
+
 
     document.addEventListener(
       "keydown",
